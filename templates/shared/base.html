@@ -4,20 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título da página -->
     <title>{% block title %}Sistema de Mercado{% endblock %}</title>
 
+    <!-- Arquivo CSS principal -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <!-- Script do menu mobile -->
     <script defer src="{% static 'js/menu.js' %}"></script>
 </head>
 <body>
+
+    <!-- Cabeçalho principal do site -->
     <header class="navbar">
         <div class="container navbar-container">
 
+            <!-- Logo do sistema -->
             <h1 class="logo">🛒 Mercado Django</h1>
 
+            <!-- Ícone do menu para celular -->
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
+            <!-- Menu de navegação -->
             <nav class="nav-links" id="mobileMenu">
                 <a href="{% url 'produto:inicio' %}">Início</a>
                 <a href="{% url 'produto:cadastrar' %}">Cadastrar Produto</a>
@@ -26,11 +35,14 @@
         </div>
     </header>
 
+    <!-- Parte onde cada página coloca seu próprio conteúdo -->
     <main class="container main-content">
         {% block content %}
         {% endblock %}
     </main>
 
+    <!-- Rodapé separado em outro arquivo -->
     {% include 'partials/_footer.html' %}
 </body>
 </html>
+

@@ -1,7 +1,11 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+
 <style>
+    /* Estilo básico da página e da tabela */
     h2 { margin-top: 30px; }
+
+    /* Estilo completo da tabela: largura, sombra, cantos arredondados */
     table {
         width: 100%;
         border-collapse: collapse;
@@ -12,19 +16,23 @@
         overflow: hidden;
     }
 
+    /* Estilo das células da tabela */
     th, td {
         border-bottom: 1px solid #ddd;
         padding: 12px;
         text-align: left;
     }
 
+    /* Cabeçalho da tabela com cor azul */
     th {
         background-color: #007bff;
         color: white;
     }
 
+    /* Efeito quando passa o mouse na linha */
     tr:hover { background-color: #f9f9f9; }
 
+    /* Estilos dos botões (editar/excluir) */
     .edit-btn, .delete-btn {
         padding: 6px 12px;
         border-radius: 6px;
@@ -33,32 +41,50 @@
         margin-right: 5px;
     }
 
+    /* Botão de editar */
     .edit-btn { background-color: #28a745; }
     .edit-btn:hover { background-color: #218838; }
 
+    /* Botão de excluir */
     .delete-btn { background-color: #dc3545; }
     .delete-btn:hover { background-color: #c82333; }
 </style>
 
+<!-- Título da página -->
 <h2>Produtos disponíveis na Loja</h2>
+
+<!-- Link para voltar à página inicial -->
 <a href="{% url 'produto:inicio' %}" style="text-decoration:none;">⬅️ Voltar</a>
+
+<!-- Tabela que lista todos os produtos -->
 <table>
     <tr>
+        <!-- Cabeçalho da tabela -->
         <th>Nome</th><th>Preço</th><th>Estoque</th><th>Tipo</th><th>Ações</th>
     </tr>
+
+    <!-- Repete uma linha para cada produto -->
     {% for p in produtos %}
     <tr>
         <td>{{ p.nome }}</td>
         <td>R$ {{ p.preco }}</td>
         <td>{{ p.estoque }}</td>
         <td>{{ p.get_tipo_display }}</td>
+
+        <!-- Botões de editar e excluir -->
         <td>
             <a href="{% url 'produto:editar' p.id %}" class="edit-btn">Editar</a>
-            <a href="{% url 'produto:excluir' p.id %}" class="delete-btn" onclick="return confirm('Tem certeza que deseja excluir este produto?');">Excluir</a>
+            <a href="{% url 'produto:excluir' p.id %}" class="delete-btn"
+            onclick="return confirm('Tem certeza que deseja excluir este produto?');">
+            Excluir
+            </a>
         </td>
     </tr>
+
     {% empty %}
+    <!-- Se não houver produtos -->
     <tr><td colspan="5">Nenhum produto na loja.</td></tr>
     {% endfor %}
 </table>
+
 {% endblock %}

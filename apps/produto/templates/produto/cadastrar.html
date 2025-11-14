@@ -1,5 +1,7 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+
+<!-- Estilos desta página -->
 <style>
     form {
         background: white;
@@ -33,29 +35,39 @@
     }
 </style>
 
+<!-- Título -->
 <h2 style="text-align:center;">Cadastrar Novo Produto</h2>
 
+<!-- Formulário -->
 <form method="post">
     {% csrf_token %}
+
+    <!-- Campo nome -->
     <label>Nome:</label>
     <input type="text" name="nome" required>
 
+    <!-- Campo preço -->
     <label>Preço:</label>
     <input type="number" name="preco" step="0.01" required>
 
+    <!-- Campo estoque -->
     <label>Estoque:</label>
     <input type="number" name="estoque" required>
 
+    <!-- Campo tipo -->
     <label>Tipo:</label>
     <select name="tipo" required>
         <option value="mercado">Mercado (Unidade)</option>
         <option value="estoque">Estoque (Caixa)</option>
     </select>
 
+    <!-- Botão -->
     <button type="submit">Cadastrar</button>
 </form>
 
+<!-- Voltar -->
 <div style="text-align:center;">
-    <a href="{% url 'produto:inicio' %}"> Voltar</a>
+    <a href="{% url 'produto:inicio' %}">Voltar</a>
 </div>
+
 {% endblock %}

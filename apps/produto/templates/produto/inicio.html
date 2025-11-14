@@ -1,16 +1,20 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+
 <style>
+    /* Área central onde ficam as opções da página */
     .container {
         text-align: center;
         margin-top: 100px;
     }
 
+    /* Título principal */
     h1 {
         font-size: 28px;
         color: #333;
     }
 
+    /* Botões principais das opções */
     .btn-option {
         display: inline-block;
         margin: 20px;
@@ -23,28 +27,35 @@
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
+    /* Efeito ao passar o mouse nos botões */
     .btn-option:hover {
         background-color: #0056b3;
         transform: scale(1.05);
     }
 
+    /* Botão verde para cadastrar novo produto */
     .btn-add {
         background-color: #28a745;
         margin-top: 40px;
     }
 
+    /* Efeito do botão verde */
     .btn-add:hover {
         background-color: #218838;
     }
 </style>
 
+<!-- Área central com as opções da página -->
 <div class="container">
+    <!-- Título da tela de escolha -->
     <h1>Escolha o que deseja visualizar</h1>
-
+    <!-- Botão para ver produtos da loja -->
     <a href="{% url 'produto:index_loja' %}" class="btn-option">Ver produtos na loja</a>
+    <!-- Botão para ver produtos do estoque -->
     <a href="{% url 'produto:index_estoque' %}" class="btn-option">Ver produtos em estoque</a>
-
     <br>
+    <!-- Botão verde para cadastrar um novo produto -->
     <a href="{% url 'produto:cadastrar' %}" class="btn-option btn-add">Cadastrar novo produto</a>
 </div>
+
 {% endblock %}

@@ -6,7 +6,7 @@ def inicio(request):
     return render(request, 'produto/inicio.html')
 
 def index_loja(request):
-  
+
     produtos = Produto.objects.filter(tipo='mercado', estoque__gt=0)
     return render(request, 'produto/index_loja.html', {'produtos': produtos})
 
