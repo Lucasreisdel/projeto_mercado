@@ -2,3 +2,4 @@
 venv_mercado/
 __pycache__/
 db.sqlite3
+venv/
