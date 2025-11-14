@@ -1,0 +1,205 @@
+/* ESTILO GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CABEÇALHO  */
+.navbar {
+    background: linear-gradient(90deg, #0078d7, #005bb5);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.2rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    color: #d4ebff;
+}
+
+/* CONTEUDO PRINCIPAL */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* TABELAS  */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+th {
+    background-color: #0078d7;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+    background-color: #f2f9ff;
+}
+
+/* FORMULÁRIOS */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+form p {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0078d7;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+/* RODAPÉ */
+.footer {
+    background-color: #002b50;
+    color: white;
+    text-align: center;
+    padding: 1.2rem 0;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+.footer p + p {
+    margin-top: 5px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    table, th, td {
+        font-size: 0.9rem;
+    }
+}
+
+/* ----- MENU MOBILE ----- */
+.menu-icon {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Navegação padrão (PC) */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Ícone aparece no celular */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Esconde o menu no celular */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+
+    /* Quando ativado pelo JavaScript */
+    .nav-links.open {
+        display: flex;
+    }
+
+    main.container {
+        width: 100%;
+        padding: 10px;
+    }
+}

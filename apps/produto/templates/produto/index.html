@@ -1,0 +1,116 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 20px;
+    }
+
+    h2 {
+        color: #333;
+        margin-top: 40px;
+        border-left: 5px solid #007bff;
+        padding-left: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .edit-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-btn:hover {
+        background-color: #218838;
+    }
+
+    .no-products {
+        background: #fff3cd;
+        padding: 15px;
+        border: 1px solid #ffeeba;
+        border-radius: 8px;
+        color: #856404;
+    }
+</style>
+
+<h2>🛒 Produtos na Loja (Disponíveis para venda)</h2>
+{% if produtos_na_loja %}
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        <th>Tipo</th>
+        <th>Ações</th>
+    </tr>
+    {% for p in produtos_na_loja %}
+    <tr>
+        <td>{{ p.nome }}</td>
+        <td>R$ {{ p.preco }}</td>
+        <td>{{ p.estoque }}</td>
+        <td>{{ p.get_tipo_display }}</td>
+        <td><a href="{% url 'produto:editar' p.id %}" class="edit-btn">Editar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<div class="no-products">Nenhum produto disponível na loja.</div>
+{% endif %}
+
+<h2>Produtos em Estoque (Caixas não expostas)</h2>
+{% if produtos_em_estoque %}
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        <th>Tipo</th>
+        <th>Ações</th>
+    </tr>
+    {% for p in produtos_em_estoque %}
+    <tr>
+        <td>{{ p.nome }}</td>
+        <td>R$ {{ p.preco }}</td>
+        <td>{{ p.estoque }}</td>
+        <td>{{ p.get_tipo_display }}</td>
+        <td><a href="{% url 'produto:editar' p.id %}" class="edit-btn">Editar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<div class="no-products">Nenhum produto em estoque.</div>
+{% endif %}
+
+{% endblock %}
